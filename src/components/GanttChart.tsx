@@ -9,9 +9,8 @@ interface GanttChartProps {
 
 export function GanttChart({ metrics }: GanttChartProps) {
   const { schedule, algorithm } = metrics;
-  if (schedule.length === 0) return null;
 
-  const maxTime = Math.max(...schedule.map(s => s.endTime));
+  const maxTime = schedule.length > 0 ? Math.max(...schedule.map(s => s.endTime)) : 0;
   const pids = [...new Set(schedule.map(s => s.pid))];
 
   const [cursorTime, setCursorTime] = useState(0);
