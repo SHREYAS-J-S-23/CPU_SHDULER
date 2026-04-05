@@ -69,6 +69,8 @@ export function GanttChart({ metrics }: GanttChartProps) {
     cursorRef.current = 0;
   };
 
+  if (schedule.length === 0) return null;
+
   const cursorPercent = (cursorTime / maxTime) * 100;
 
   return (
